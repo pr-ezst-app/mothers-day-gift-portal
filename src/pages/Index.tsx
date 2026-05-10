@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const FLOWER_BG = "https://cdn.ezst.app/projects/05fad545-e8d9-4923-8d67-4051f498d74c/files/8554659e-b7ac-4a78-8f2b-004302007e73.jpg";
+const BOUQUET_IMG = "https://cdn.ezst.app/projects/05fad545-e8d9-4923-8d67-4051f498d74c/files/d4ddd111-9099-4748-a1a0-9e3f475aa58d.jpg";
 const PASSWORD = "0828";
 
 type Screen = "welcome" | "password" | "gifts" | "bouquet";
@@ -20,6 +21,8 @@ export default function Index() {
   const [shake, setShake] = useState(false);
   const [showLetter, setShowLetter] = useState(false);
   const [letterVisible, setLetterVisible] = useState(false);
+  const [showBouquet, setShowBouquet] = useState(false);
+  const [bouquetVisible, setBouquetVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -49,6 +52,16 @@ export default function Index() {
         }, 700);
       }
     }
+  };
+
+  const openBouquet = () => {
+    setShowBouquet(true);
+    setTimeout(() => setBouquetVisible(true), 50);
+  };
+
+  const closeBouquet = () => {
+    setBouquetVisible(false);
+    setTimeout(() => setShowBouquet(false), 500);
   };
 
   const openLetter = () => {
@@ -223,7 +236,7 @@ export default function Index() {
 
             <div className="flex flex-col gap-4 w-full">
               {[
-                { icon: "💐", label: "ブーケ", sub: "お花のプレゼント", delay: "0.25s", action: "bouquet" },
+                { icon: "💐", label: "ブーケ", sub: "カーネーションのプレゼント", delay: "0.25s", action: "bouquet" },
                 { icon: "💌", label: "手紙", sub: "こっちゃんからのメッセージ", delay: "0.5s", action: "letter" },
               ].map((gift) => (
                 <div
@@ -232,7 +245,10 @@ export default function Index() {
                   style={{ animationDelay: gift.delay }}
                 >
                   <button
-                    onClick={() => gift.action === "letter" && openLetter()}
+                    onClick={() => {
+                      if (gift.action === "letter") openLetter();
+                      if (gift.action === "bouquet") openBouquet();
+                    }}
                     className="group w-full rounded-3xl border border-rose-300/25 bg-white/10 px-6 py-5 backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-100 text-left flex items-center gap-5"
                     style={{ boxShadow: "0 8px 32px rgba(180,30,60,0.25)" }}
                   >
@@ -246,6 +262,81 @@ export default function Index() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── BOUQUET MODAL ── */}
+      {showBouquet && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center"
+          onClick={closeBouquet}
+          style={{ background: "rgba(20,0,8,0.75)", backdropFilter: "blur(8px)" }}
+        >
+          <div
+            className="relative w-full flex flex-col items-center pb-10"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              transform: bouquetVisible ? "translateY(0)" : "translateY(100%)",
+              opacity: bouquetVisible ? 1 : 0,
+              transition: "all 0.55s cubic-bezier(0.34,1.4,0.64,1)",
+            }}
+          >
+            {/* Message ribbon */}
+            <div
+              className="relative z-10 mb-[-24px] rounded-2xl px-8 py-3 text-center shadow-xl"
+              style={{
+                background: "linear-gradient(135deg, #be123c, #e11d48)",
+                boxShadow: "0 8px 32px rgba(190,18,60,0.5)",
+              }}
+            >
+              <p className="font-caveat text-2xl font-bold text-white">
+                ママへ、大好きだよ 💕
+              </p>
+            </div>
+
+            {/* Bouquet image — pops out from bottom */}
+            <div
+              className="relative"
+              style={{
+                transform: bouquetVisible ? "scale(1) rotate(-4deg)" : "scale(0.6) rotate(-4deg)",
+                transition: "transform 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.1s",
+                filter: "drop-shadow(0 -24px 48px rgba(220,60,80,0.4)) drop-shadow(0 8px 32px rgba(0,0,0,0.5))",
+              }}
+            >
+              <img
+                src={BOUQUET_IMG}
+                alt="カーネーションの花束"
+                className="w-72 rounded-full md:w-96"
+                style={{
+                  border: "4px solid rgba(255,200,210,0.3)",
+                  boxShadow: "0 -8px 60px rgba(230,80,100,0.35)",
+                }}
+              />
+              {/* Sparkles */}
+              {["✨","💫","⭐","✨","💕"].map((s, i) => (
+                <span
+                  key={i}
+                  className="absolute text-2xl"
+                  style={{
+                    top: `${[10,5,20,35,15][i]}%`,
+                    left: `${[-8, 85, -12, 88, 45][i]}%`,
+                    opacity: bouquetVisible ? 1 : 0,
+                    transform: bouquetVisible ? "scale(1)" : "scale(0)",
+                    transition: `all 0.4s ease ${0.4 + i * 0.1}s`,
+                  }}
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+
+            <button
+              onClick={closeBouquet}
+              className="mt-4 font-cormorant italic text-rose-200/60 text-base hover:text-rose-200 transition-colors"
+            >
+              タップして閉じる
+            </button>
           </div>
         </div>
       )}
