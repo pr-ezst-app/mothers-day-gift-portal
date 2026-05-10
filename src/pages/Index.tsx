@@ -104,32 +104,38 @@ export default function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-rose-950/40 via-rose-900/25 to-rose-950/70" />
           <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center">
             <p
-              className="welcome-text font-cormorant italic text-rose-100/90 text-xl tracking-[0.3em]"
+              className="welcome-text font-cormorant italic text-rose-100/80 text-lg tracking-[0.5em] uppercase"
               style={{ animationDelay: "0.1s" }}
             >
-              Happy Mother's Day
+              With All My Love
             </p>
             <h1
-              className="welcome-text font-caveat text-7xl font-bold text-white md:text-9xl"
+              className="welcome-text font-cormorant text-white leading-none"
               style={{
                 animationDelay: "0.6s",
-                textShadow: "0 4px 40px rgba(180,30,60,0.7), 0 0 80px rgba(220,60,80,0.3)",
+                fontSize: "clamp(5rem, 18vw, 13rem)",
+                fontWeight: 300,
+                fontStyle: "italic",
+                textShadow: "0 4px 60px rgba(180,30,60,0.7), 0 0 100px rgba(220,60,80,0.25)",
+                letterSpacing: "-0.02em",
               }}
             >
-              母の日
+              Happy
             </h1>
             <h2
-              className="welcome-text font-caveat text-5xl font-semibold text-rose-100 md:text-6xl"
+              className="welcome-text font-cormorant font-bold text-rose-100 leading-none"
               style={{
-                animationDelay: "1.2s",
-                textShadow: "0 2px 20px rgba(180,30,60,0.6)",
+                animationDelay: "1s",
+                fontSize: "clamp(3.5rem, 12vw, 9rem)",
+                textShadow: "0 2px 24px rgba(180,30,60,0.6)",
+                letterSpacing: "0.08em",
               }}
             >
-              おめでとう
+              Mother's Day
             </h2>
             <p
-              className="welcome-text font-caveat text-3xl text-rose-300 mt-3"
-              style={{ animationDelay: "2s" }}
+              className="welcome-text font-cormorant italic text-rose-300/70 text-2xl mt-4"
+              style={{ animationDelay: "1.9s", letterSpacing: "0.2em" }}
             >
               🌸 ～ ♥ ～ 🌸
             </p>
@@ -154,13 +160,19 @@ export default function Index() {
             style={{ maxWidth: 380, width: "90%", boxShadow: "0 24px 64px rgba(100,0,30,0.5)" }}
           >
             <div className="text-center">
-              <p className="font-caveat text-5xl">🔐</p>
-              <h2 className="font-caveat text-4xl font-bold text-white leading-snug mt-2"
-                style={{ textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
-                パスワードを<br />入力してね
+              <p className="text-5xl">🔐</p>
+              <h2
+                className="font-cormorant font-bold text-white leading-none mt-3"
+                style={{
+                  fontSize: "clamp(2.2rem, 8vw, 3.5rem)",
+                  textShadow: "0 2px 16px rgba(0,0,0,0.5)",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                Enter the Password
               </h2>
-              <p className="mt-3 font-cormorant italic text-rose-300/80 text-lg">
-                ヒント：ママの誕生日
+              <p className="mt-3 font-cormorant italic text-rose-300/75 text-lg">
+                Hint: Mom's birthday
               </p>
             </div>
 
@@ -224,20 +236,26 @@ export default function Index() {
 
           <div className="relative z-10 flex flex-col items-center gap-8 px-6 text-center w-full max-w-md">
             <div className="screen-enter" style={{ animationDelay: "0s" }}>
-              <p className="font-caveat text-3xl text-rose-300">🌸 ～ ♥ ～ 🌸</p>
-              <h1 className="font-caveat text-5xl font-bold text-white mt-2"
-                style={{ textShadow: "0 4px 28px rgba(180,30,60,0.8)" }}>
-                ありがとう、ママ
+              <p className="font-cormorant italic text-rose-300/70 text-xl tracking-[0.3em]">🌸 ～ ♥ ～ 🌸</p>
+              <h1
+                className="font-cormorant font-bold text-white mt-2 leading-none"
+                style={{
+                  fontSize: "clamp(3rem, 11vw, 5.5rem)",
+                  textShadow: "0 4px 32px rgba(180,30,60,0.8)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Thank You, Mom
               </h1>
-              <p className="font-cormorant italic text-rose-200/75 text-xl mt-2">
-                プレゼントを選んでね
+              <p className="font-cormorant italic text-rose-200/70 text-xl mt-2 tracking-wider">
+                Choose your gift
               </p>
             </div>
 
             <div className="flex flex-col gap-4 w-full">
               {[
-                { icon: "💐", label: "ブーケ", sub: "カーネーションのプレゼント", delay: "0.25s", action: "bouquet" },
-                { icon: "💌", label: "手紙", sub: "こっちゃんからのメッセージ", delay: "0.5s", action: "letter" },
+                { icon: "💐", label: "Bouquet", sub: "A carnation arrangement for you", delay: "0.25s", action: "bouquet" },
+                { icon: "💌", label: "Letter", sub: "A message from Kochan", delay: "0.5s", action: "letter" },
               ].map((gift) => (
                 <div
                   key={gift.action}
@@ -254,8 +272,8 @@ export default function Index() {
                   >
                     <span className="text-5xl">{gift.icon}</span>
                     <div className="flex-1">
-                      <p className="font-caveat text-3xl font-bold text-white">{gift.label}</p>
-                      <p className="font-cormorant italic text-rose-200/65 text-base">{gift.sub}</p>
+                      <p className="font-cormorant font-bold text-white text-3xl leading-none">{gift.label}</p>
+                      <p className="font-cormorant italic text-rose-200/60 text-base mt-0.5">{gift.sub}</p>
                     </div>
                     <span className="font-caveat text-2xl text-rose-300/50 group-hover:translate-x-1 transition-transform duration-200">→</span>
                   </button>
@@ -290,8 +308,8 @@ export default function Index() {
                 boxShadow: "0 8px 32px rgba(190,18,60,0.5)",
               }}
             >
-              <p className="font-caveat text-2xl font-bold text-white">
-                ママへ、大好きだよ 💕
+              <p className="font-cormorant font-bold text-white text-2xl tracking-wide">
+                With love, always 💕
               </p>
             </div>
 
@@ -333,9 +351,9 @@ export default function Index() {
 
             <button
               onClick={closeBouquet}
-              className="mt-4 font-cormorant italic text-rose-200/60 text-base hover:text-rose-200 transition-colors"
+              className="mt-4 font-cormorant italic text-rose-200/50 text-base hover:text-rose-200 transition-colors tracking-wider"
             >
-              タップして閉じる
+              Tap to close
             </button>
           </div>
         </div>
