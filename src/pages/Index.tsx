@@ -104,7 +104,7 @@ export default function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-rose-950/40 via-rose-900/25 to-rose-950/70" />
           <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center">
             <p
-              className="welcome-text font-cormorant italic text-rose-100/80 text-lg tracking-[0.5em] uppercase"
+              className="welcome-text font-cormorant italic text-rose-100 text-xl tracking-[0.5em] uppercase"
               style={{ animationDelay: "0.1s" }}
             >
               With All My Love
@@ -171,7 +171,7 @@ export default function Index() {
               >
                 Enter the Password
               </h2>
-              <p className="mt-3 font-cormorant italic text-rose-300/75 text-lg">
+              <p className="mt-3 font-cormorant italic text-rose-200 text-xl">
                 Hint: Mom's birthday
               </p>
             </div>
@@ -236,7 +236,7 @@ export default function Index() {
 
           <div className="relative z-10 flex flex-col items-center gap-8 px-6 text-center w-full max-w-md">
             <div className="screen-enter" style={{ animationDelay: "0s" }}>
-              <p className="font-cormorant italic text-rose-300/70 text-xl tracking-[0.3em]">🌸 ～ ♥ ～ 🌸</p>
+              <p className="font-cormorant italic text-rose-200 text-xl tracking-[0.3em]">🌸 ～ ♥ ～ 🌸</p>
               <h1
                 className="font-cormorant font-bold text-white mt-2 leading-none"
                 style={{
@@ -247,7 +247,7 @@ export default function Index() {
               >
                 Thank You, Mom
               </h1>
-              <p className="font-cormorant italic text-rose-200/70 text-xl mt-2 tracking-wider">
+              <p className="font-cormorant italic text-rose-100 text-xl mt-2 tracking-wider">
                 Choose your gift
               </p>
             </div>
@@ -273,7 +273,7 @@ export default function Index() {
                     <span className="text-5xl">{gift.icon}</span>
                     <div className="flex-1">
                       <p className="font-cormorant font-bold text-white text-3xl leading-none">{gift.label}</p>
-                      <p className="font-cormorant italic text-rose-200/60 text-base mt-0.5">{gift.sub}</p>
+                      <p className="font-cormorant italic text-rose-200 text-base mt-0.5">{gift.sub}</p>
                     </div>
                     <span className="font-caveat text-2xl text-rose-300/50 group-hover:translate-x-1 transition-transform duration-200">→</span>
                   </button>
@@ -351,7 +351,7 @@ export default function Index() {
 
             <button
               onClick={closeBouquet}
-              className="mt-4 font-cormorant italic text-rose-200/50 text-base hover:text-rose-200 transition-colors tracking-wider"
+              className="mt-4 font-cormorant italic text-rose-200 text-base hover:text-white transition-colors tracking-wider"
             >
               Tap to close
             </button>
